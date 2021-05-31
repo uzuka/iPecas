@@ -1,5 +1,4 @@
 import { ProductService } from './../models-services/product-service';
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Produto } from './../models-services/Produto.models';
 
@@ -13,8 +12,7 @@ export class ProdutosPage implements OnInit {
   titulo = 'Produtos';
   listaProdutos: Produto[];
 
-  constructor(private productService: ProductService,
-    public router: Router) {
+  constructor(private productService: ProductService) {
       this.listaProdutos = this.productService.getProdutos();
     }
 

@@ -1,35 +1,34 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Usuários</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
+    <ion-title>Usuários</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" color="medium">
+<ion-content [fullscreen]="true">
   <ion-list>
-    <ion-item-sliding *ngFor="let usuario of listaUsuarios">
+    <ion-item  *ngFor="let usuario of listaUsuarios; let i = index"
+        [routerLink]="['/editar-usuario',i]">
 
     <ion-item lines="full">
-      <ion-thumbnail slot="start">
-        <img [src]="usuario.imagem">
-      </ion-thumbnail>
-
-      <ion-label class="ion-text-wrap">
-        <div>
-          <h1>{{usuario.nome}}</h1>
-          <p>{{usuario.email}}</p>
-          <p>{{usuario.endereco}}</p>
-        </div>
-      </ion-label>
-
+        <ion-thumbnail slot="start">
+          <img [src]="usuario.imagem">
+        </ion-thumbnail>
+        <ion-label class="ion-text-wrap">
+          <div>
+            <h1>{{usuario.nome}}</h1>
+            <p>{{usuario.email}}</p>
+            <p>{{usuario.endereco}}</p>
+          </div>
+        </ion-label>
+      </ion-item>
     </ion-item>
-    </ion-item-sliding>
-
   </ion-list>
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button>
+    <ion-fab-button routerLink="/criar-usuario">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

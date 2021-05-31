@@ -18,19 +18,19 @@ export class UserService {
     ];
   }
 
-  getProdutos(){
+  getUsuarios(){
     return this.usuarios;
   }
 
-  getProduto(i: number){
+  getUsuario(i: number){
     return this.usuarios[i];
   }
 
-  criarProduto(nome: string, email: string, endereco: string, imagem: string){
+  criarUsuario(nome: string, email: string, endereco: string, imagem: string){
     this.usuarios.push(new Usuario(nome, email, endereco, imagem));
   }
 
-  atualizarProduto(i: number, nome: string, email: string, endereco: string, imagem: string){
+  atualizarUsuario(i: number, nome: string, email: string, endereco: string, imagem: string){
     this.usuarios[i].nome = nome;
     this.usuarios[i].email = email;
     this.usuarios[i].endereco = endereco;

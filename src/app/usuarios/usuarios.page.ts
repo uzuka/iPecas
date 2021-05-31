@@ -1,6 +1,6 @@
+import { UserService } from './../models-services/user-service';
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from './../models-services/Usuario.models';
-import { UserService } from './../models-services/user-service';
 
 @Component({
   selector: 'app-usuarios',
@@ -13,7 +13,7 @@ export class UsuariosPage implements OnInit {
   listaUsuarios: Usuario[];
 
   constructor(private userService: UserService) {
-    this.listaUsuarios = this.userService.getProdutos();
+    this.listaUsuarios = this.userService.getUsuarios();
   }
 
   ngOnInit() {

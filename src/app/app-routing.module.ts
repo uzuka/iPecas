@@ -22,6 +22,22 @@ const routes: Routes = [
   {
     path: 'desenvolvedores',
     loadChildren: () => import('./desenvolvedores/desenvolvedores.module').then( m => m.DesenvolvedoresPageModule)
+  },
+  {
+    path: 'criar-produto',
+    loadChildren: () => import('./criar-produto/criar-produto.module').then( m => m.CriarProdutoPageModule)
+  },
+  {
+    path: 'editar-produto/:id',
+    loadChildren: () => import('./editar-produto/editar-produto.module').then( m => m.EditarProdutoPageModule)
+  },
+  {
+    path: 'criar-usuario',
+    loadChildren: () => import('./criar-usuario/criar-usuario.module').then( m => m.CriarUsuarioPageModule)
+  },
+  {
+    path: 'editar-usuario/:id',
+    loadChildren: () => import('./editar-usuario/editar-usuario.module').then( m => m.EditarUsuarioPageModule)
   }
 ];
 

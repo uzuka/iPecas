@@ -1,0 +1,37 @@
+<ion-app>
+  <ion-header translucent>
+    <ion-toolbar>
+      <ion-title>Usuários</ion-title>
+
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content [fullscreen]="true">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+          <ion-label>
+            <h1>Cadastro de Usuários</h1>
+          </ion-label>
+    <ion-item>
+        <ion-label for="nome">Nome: </ion-label>
+        <ion-input class="form-control" type="text" id="nome" name="nome" ngModel required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label for="email">Email: </ion-label>
+      <ion-input class="form-control" type="text" id="email" name="email" ngModel required></ion-input>
+  </ion-item>
+
+    <ion-item>
+        <ion-label for="endereco">Endereço: </ion-label>
+        <ion-input class="form-control" type="text" id="endereco" name="endereco" ngModel required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label for="imagem">Link da Imagem: </ion-label>
+      <ion-input class="form-control" type="text" id="imagem" name="imagem" ngModel required placeholder="Link da imagem"></ion-input>
+  </ion-item>
+    <ion-item>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <button type="submit"  routerLink="/usuarios">Cancelar</button>
+    </ion-item>
+  </form>
+</ion-content>
