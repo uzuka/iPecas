@@ -6,6 +6,7 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
   <ion-content fullscreen class='ion-padding'>
       <ion-text class="ion-padding">
           <h1>Editar Produto</h1>
@@ -35,9 +36,7 @@
               [(ngModel)]="produto.imagem" required></ion-input>
           </ion-item>
 
-              <ion-button color='dark' type="submit" expand="block" fill="outline">
-                  Alterar
-              </ion-button>
+              <ion-button color='dark' type="submit" expand="block" fill="outline">Alterar</ion-button>
               <ion-button color='dark' type="submit"  expand="block" fill="outline" routerLink="/produtos">Cancelar</ion-button>
           </ion-list>
       </form>

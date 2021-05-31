@@ -1,37 +1,37 @@
-<ion-app>
-  <ion-header translucent>
+  <ion-header>
     <ion-toolbar>
       <ion-title>Produtos</ion-title>
-
     </ion-toolbar>
   </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content fullscreen class="ion-padding">
+  <ion-text class="ion-padding">
+    <h1>Cadastro de Produtos</h1>
+  </ion-text>
   <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-          <ion-label>
-            <h1>Cadastro de Produtos</h1>
-          </ion-label>
-    <ion-item>
+    <ion-list>
+      <ion-item>
         <ion-label for="nome">Nome: </ion-label>
-        <ion-input class="form-control" type="text" id="nome" name="nome" ngModel required></ion-input>
+        <ion-input type="text" id="nome" name="nome" ngModel required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label for="descricao">Descrição: </ion-label>
-      <ion-input class="form-control" type="text" id="descricao" name="descricao" ngModel required></ion-input>
+      <ion-input type="text" id="descricao" name="descricao" ngModel required></ion-input>
   </ion-item>
 
     <ion-item>
         <ion-label for="preco">Preço: </ion-label>
-        <ion-input class="form-control" type="number" id="preco" ngModel name="preco" required></ion-input>
+        <ion-input type="number" id="preco" ngModel name="preco" required></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label for="imagem">Link da Imagem: </ion-label>
-      <ion-input class="form-control" type="text" id="imagem" name="imagem" ngModel required placeholder="link da imagem"></ion-input>
+      <ion-input type="text" id="imagem" name="imagem" ngModel required placeholder="link da imagem"></ion-input>
   </ion-item>
     <ion-item>
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
-        <button type="submit"  routerLink="/produtos">Cancelar</button>
+        <ion-button  color='dark'type="submit" expand="block" fill="outline">Cadastrar</ion-button>
+        <button type="submit" routerLink="/produtos">Cancelar</button>
     </ion-item>
+  </ion-list>
   </form>
 </ion-content>

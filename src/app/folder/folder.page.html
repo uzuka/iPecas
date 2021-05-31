@@ -3,19 +3,26 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
+      <ion-title size="large">iPeças</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-card>
+    <img src="./../../assets/img/fundo.jpeg" />
+    <ion-card-header>
+      <ion-card-title>GMS - Loja de auto peças</ion-card-title>
+      <ion-card-subtitle>Quer precinho? O Bodinho faz!</ion-card-subtitle>
+
+    </ion-card-header>
+    <ion-card-content>
+      <p>Situada em Bom Repouso, Minas Gerais.
+      Rua Padre Florentino, Nº 56.<br>Whatsapp: +55 35 9906-9622</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
