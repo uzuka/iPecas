@@ -12,11 +12,14 @@ export class ProdutosPage implements OnInit {
   titulo = 'Produtos';
   listaProdutos: Produto[];
 
-  constructor(private productService: ProductService) {
-      this.listaProdutos = this.productService.getProdutos();
-    }
+  constructor(private productService: ProductService) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewWillEnter(){
+    this.productService.getProdutos().subscribe(produtos =>{
+      this.listaProdutos = produtos
+      this.productService.maxID = produtos[produtos.length-1].id+1
+    })
   }
-
 }

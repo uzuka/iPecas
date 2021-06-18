@@ -15,29 +15,28 @@
               <ion-item>
                   <ion-label for="nome">Nome:</ion-label>
                   <ion-input type="text" id="nome" name="nome"
-                  [(ngModel)]="usuario.nome" required>
+                  [ngModel]="usuario?.nome" required>
                   </ion-input>
               </ion-item>
 
               <ion-item>
                   <ion-label for="email">Email: </ion-label>
                   <ion-input type="text" step="0.01" id="email" name="email"
-                  [(ngModel)]="usuario.email" required></ion-input>
+                  [ngModel]="usuario?.email" required></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label for="endereco">Endereço: </ion-label>
                 <ion-input type="text" step="0.01" id="endereco" name="endereco"
-                [(ngModel)]="usuario.endereco" required></ion-input>
+                [ngModel]="usuario?.endereco" required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label for="imagem">Link da imagem: </ion-label>
               <ion-input type="text" step="0.01" id="imagem" name="imagem"
-              [(ngModel)]="usuario.imagem" required></ion-input>
+              [ngModel]="usuario?.imagem" required></ion-input>
           </ion-item>
 
-              <ion-button color='dark' type="submit" expand="block" fill="outline">
-                  Alterar
-              </ion-button>
+              <ion-button color='dark' type="submit" expand="block" fill="outline">Alterar</ion-button>
+              <ion-button color='dark' (click)='excluir(id)' expand="block" fill="outline" routerLink="/usuarios">Excluir</ion-button>
               <ion-button color='dark' type="submit"  expand="block" fill="outline" routerLink="/usuarios">Cancelar</ion-button>
           </ion-list>
       </form>

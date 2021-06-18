@@ -10,23 +10,18 @@ import { Router } from '@angular/router';
 export class CriarProdutoPage implements OnInit {
 
   constructor(private productService: ProductService,
-    public router: Router) { }
+    public router: Router) {}
 
   onSubmit(form: any) {
-    let nome = '';
-    let descricao = '';
-    let preco = 0;
-    let imagem = '';
+    let nome : string = form.value.nome;
+    let descricao : string = form.value.descricao;
+    let preco : number = Number(form.value.preco);
+    let imagem : string = form.value.imagem
 
-    nome = form.value.nome;
-    descricao = form.value.descricao;
-    preco = Number(form.value.preco);
-    imagem = form.value.imagem;
-
-    this.productService.criarProduto(nome, descricao, preco, imagem);
-    this.router.navigate(['/produtos']);
+    this.productService.criarProduto(nome, descricao, preco, imagem).subscribe(() =>{
+      this.router.navigate(['/produtos']);
+    });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

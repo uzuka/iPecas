@@ -10,7 +10,7 @@
 <ion-content [fullscreen]="true">
   <ion-list>
     <ion-item  *ngFor="let usuario of listaUsuarios; let i = index"
-        [routerLink]="['/editar-usuario',i]">
+        [routerLink]="['/editar-usuario',usuario.id]">
 
     <ion-item lines="full">
         <ion-thumbnail slot="start">

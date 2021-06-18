@@ -1,39 +1,40 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from './Usuario.models';
+import { HttpClient } from '@angular/common/http'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private usuarios: Usuario[];
+  baseUrl = "http://localhost:3000/usuarios";
 
-  constructor() {
-    this.usuarios = [
-      // eslint-disable-next-line max-len
-      new Usuario('Maria José', 'maria.josé@gmail.com', 'Rua Manoel da Costa Mendonça','http://www.escoladeimagem.com.br/wp-content/uploads/download-1.jpeg'),
-      new Usuario('João Pedro', 'joao.pedro@gmail.com', 'Rua Praça João de Souza','https://img.ibxk.com.br/2019/02/17/17124052466014.jpg'),
-      // eslint-disable-next-line max-len
-      new Usuario('Sebastião Ribeiro', 'sebastiao.ribeiro@gmail.com', 'Rua Minas Gerais','https://engenharia360.com/wp-content/uploads/2019/05/esta-pessoa-nao-existe-engenharia360-4.png')
-    ];
+  maxID : number = 0;
+
+  constructor(private http: HttpClient) {}
+
+  getUsuarios() : Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(this.baseUrl);
   }
 
-  getUsuarios(){
-    return this.usuarios;
+  getUsuario(id : string) : Observable<Usuario>{
+    const url = `${this.baseUrl}/${id}`
+    return this.http.get<Usuario>(url);
   }
 
-  getUsuario(i: number){
-    return this.usuarios[i];
+  criarUsuario(nome: string, email: string, endereco: string, imagem: string) : Observable<Usuario>{
+    let usuario = new Usuario(this.maxID, nome, email,endereco, imagem)
+    return this.http.post<Usuario>(this.baseUrl, usuario)
   }
 
-  criarUsuario(nome: string, email: string, endereco: string, imagem: string){
-    this.usuarios.push(new Usuario(nome, email, endereco, imagem));
+  atualizarUsuario(id: number, usuario : Usuario) : Observable<Usuario>{
+    const url = `${this.baseUrl}/${id}`
+    return this.http.put<Usuario>(url, usuario)
   }
 
-  atualizarUsuario(i: number, nome: string, email: string, endereco: string, imagem: string){
-    this.usuarios[i].nome = nome;
-    this.usuarios[i].email = email;
-    this.usuarios[i].endereco = endereco;
-    this.usuarios[i].imagem = imagem;
+  excluirUsuario(id : number) : Observable<Usuario>{
+    const url = `${this.baseUrl}/${id}`
+    return this.http.delete<Usuario>(url)
   }
 }

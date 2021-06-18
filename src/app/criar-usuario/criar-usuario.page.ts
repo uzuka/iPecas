@@ -10,23 +10,19 @@ import { Router } from '@angular/router';
 export class CriarUsuarioPage implements OnInit {
 
   constructor(private userService: UserService,
-    public router: Router) { }
+    public router: Router,
+    ) {}
 
   onSubmit(form: any) {
-    let nome = '';
-    let email = '';
-    let endereco = '';
-    let imagem = '';
+    let nome : string = form.value.nome;
+    let email : string = form.value.email;
+    let endereco : string = form.value.endereco;
+    let imagem : string = form.value.imagem;
 
-    nome = form.value.nome;
-    email = form.value.email;
-    endereco = form.value.endereco;
-    imagem = form.value.imagem;
-
-    this.userService.criarUsuario(nome, email, endereco, imagem);
-    this.router.navigate(['/usuarios']);
+    this.userService.criarUsuario(nome, email, endereco, imagem).subscribe(() =>{
+      this.router.navigate(['/usuarios']);
+    });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

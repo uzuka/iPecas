@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Produto } from '../models-services/Produto.models';
 import { ProductService } from './../models-services/product-service';
 
 @Component({
@@ -10,30 +11,37 @@ import { ProductService } from './../models-services/product-service';
   export class EditarProdutoPage implements OnInit {
 
   id = 0;
-  produto: any;
+
+  produto : Produto = null
 
   constructor(private productService: ProductService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.id = Number (this.route.snapshot.paramMap.get('id'));
-    this.produto = this.productService.getProduto(this.id);
-    if(this.produto == null){
-      this.router.navigate(['']);
-    }
+    this.productService.getProduto(this.id).subscribe(produto => {
+      this.produto = produto
+      if(this.produto == null){
+        this.router.navigate(['']);
+      }
+    });
   }
 
   onSubmit(form: any) {
-    // eslint-disable-next-line prefer-const
-    let nome = form.value.nome;
-    // eslint-disable-next-line prefer-const
-    let descricao = form.value.descricao;
-    // eslint-disable-next-line prefer-const
-    let preco = Number(form.value.preco);
-    // eslint-disable-next-line prefer-const
-    let imagem = form.value.imagem;
-    this.productService.atualizarProduto(this.id, nome, descricao, preco, imagem);
-    this.router.navigate(['/produtos']);
+    this.produto.nome = form.value.nome;
+    this.produto.descricao = form.value.descricao;
+    this.produto.preco = Number(form.value.preco);
+    this.produto.imagem = form.value.imagem;
+
+    this.productService.atualizarProduto(this.id, this.produto).subscribe(()=>{
+      this.router.navigate(['/produtos']);
+    });
+  }
+
+  excluir(id :  number){
+    this.productService.excluirProduto(id).subscribe(() =>{
+      this.router.navigate(['/produtos']);
+    })
   }
 }
